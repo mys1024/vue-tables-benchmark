@@ -53,7 +53,7 @@
 
 | 对比项\表格名 | none | native | ant-design-vue | element-plus | element-plus-v2 | vxe-table | vueuse |
 | - | - | - | - | - | - | - | - |
-| 加载速度 | N/A | 非常慢 | 出现无响应 | 非常慢 | 快 | 快 | 快 |
+| 加载速度 | N/A | 非常慢 | 短时间卡死 | 非常慢 | 快 | 快 | 快 |
 | 滚动流畅度 | N/A | 较卡 | 卡顿 | 卡顿 | 流畅 | 流畅 | 流畅 |
 | 加载后的内存分配 | 46MB | 250MB | 1577MB | 257MB | 47MB | 48MB | 47MB |
 | 滚动时的内存分配 | N/A | 250MB | 1601MB | 257MB | 971MB | 58MB | 63MB |
