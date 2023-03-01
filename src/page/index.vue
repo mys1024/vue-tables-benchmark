@@ -22,7 +22,7 @@ const activeTable = ref<
   | 'vueuse'
 >('none')
 const colCount = ref(10)
-const rowCount = ref(1000000)
+const rowCount = ref(1000)
 const cols = computed(() => Array.from(new Array(colCount.value)).map((_, i) => ({
   title: `col${i}`,
   dataIndex: `col${i}`,
