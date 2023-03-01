@@ -47,8 +47,6 @@
 | 加载后的内存分配 | 36MB | 47MB | 206MB | 85MB | 45MB | 45MB | 36MB |
 | 滚动时的内存分配 | N/A | 48MB | 208MB | 85MB | 520MB | 49MB | 47MB |
 
-备注：在快速滚动时，element-plus-v2 使用非常多的内存。
-
 ### 测试2：10000 行 10 列
 
 | 对比项\表格名 | none | native | ant-design-vue | element-plus | element-plus-v2 | vxe-table | vueuse |
@@ -91,7 +89,7 @@
 
 在 **element-plus-v2** 中使用的 ElTableV2 组件是 element-plus 的一个仍在测试中的新组件，并存在着快速滚动时内存分配量激增、列数过多时卡顿的问题。
 
-在 ****vueuse**** 中使用的 useVirtualList 是工具库 @vueuse/core 提供的一个用于渲染虚拟列表的函数。从测试结果看，useVirtualList 的性能表现很优秀，但如果你需要一个功能丰富的表格组件，那么你需要做大量的开发与封装。
+在 ****vueuse**** 中使用的 useVirtualList 是工具库 @vueuse/core 提供的一个用于渲染虚拟列表的函数。从测试结果看，useVirtualList 的性能表现很优秀，但如果你需要一个功能丰富的表格组件，那么你还需要做更多的的开发与封装。
 
 综合来看，vxe-table 的 VxeTable 组件是本文的测试中最“拿来就能用”的表格了。
 
