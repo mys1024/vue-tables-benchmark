@@ -10,17 +10,12 @@ import 'vxe-table/lib/vxe-table/style/style.css'
 import 'vxe-table/lib/vxe-column/style/style.css'
 import 'element-plus/dist/index.css'
 
+import type { TableName } from '~/types'
+import TableSelector from '~/components/TableSelector.vue'
+
 const { memory } = useMemory()
 
-const activeTable = ref<
-  | 'none'
-  | 'native'
-  | 'ant-design-vue'
-  | 'element-plus'
-  | 'element-plus-v2'
-  | 'vxe-table'
-  | 'vueuse'
->('none')
+const activeTable = ref<TableName>('none')
 const colCount = ref(10)
 const rowCount = ref(1000)
 const cols = computed(() => Array.from(new Array(colCount.value)).map((_, i) => ({
@@ -79,78 +74,7 @@ function friendlySize(byteCount: number) {
       </span>
       <span>
         <label>切换表格：</label>
-        <span space-x-2>
-          <button
-            px-2 text-white rounded transition
-            :class="{
-              'bg-gray hover:bg-sky': activeTable !== 'none',
-              'bg-sky-5': activeTable === 'none',
-            }"
-            @click="activeTable = 'none'"
-          >
-            none
-          </button>
-          <button
-            px-2 text-white rounded transition
-            :class="{
-              'bg-gray hover:bg-sky': activeTable !== 'native',
-              'bg-sky-5': activeTable === 'native',
-            }"
-            @click="activeTable = 'native'"
-          >
-            native
-          </button>
-          <button
-            px-2 text-white rounded transition
-            :class="{
-              'bg-gray hover:bg-sky': activeTable !== 'ant-design-vue',
-              'bg-sky-5': activeTable === 'ant-design-vue',
-            }"
-            @click="activeTable = 'ant-design-vue'"
-          >
-            ant-design-vue
-          </button>
-          <button
-            px-2 text-white rounded transition
-            :class="{
-              'bg-gray hover:bg-sky': activeTable !== 'element-plus',
-              'bg-sky-5': activeTable === 'element-plus',
-            }"
-            @click="activeTable = 'element-plus'"
-          >
-            element-plus
-          </button>
-          <button
-            px-2 text-white rounded transition
-            :class="{
-              'bg-gray hover:bg-sky': activeTable !== 'element-plus-v2',
-              'bg-sky-5': activeTable === 'element-plus-v2',
-            }"
-            @click="activeTable = 'element-plus-v2'"
-          >
-            element-plus-v2
-          </button>
-          <button
-            px-2 text-white rounded transition
-            :class="{
-              'bg-gray hover:bg-sky': activeTable !== 'vxe-table',
-              'bg-sky-5': activeTable === 'vxe-table',
-            }"
-            @click="activeTable = 'vxe-table'"
-          >
-            vxe-table
-          </button>
-          <button
-            px-2 text-white rounded transition
-            :class="{
-              'bg-gray hover:bg-sky': activeTable !== 'vueuse',
-              'bg-sky-5': activeTable === 'vueuse',
-            }"
-            @click="activeTable = 'vueuse'"
-          >
-            vueuse
-          </button>
-        </span>
+        <TableSelector v-model:active-table="activeTable" />
       </span>
     </div>
     <!-- 确保 activeTable === 'none' 时触发 computed -->
