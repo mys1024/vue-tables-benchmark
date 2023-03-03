@@ -17,7 +17,7 @@ const { memory } = useMemory()
 
 const activeTable = ref<TableName>('none')
 const colCount = ref(10)
-const rowCount = ref(1000)
+const rowCount = ref(1000000)
 const cols = computed(() => Array.from(new Array(colCount.value)).map((_, i) => ({
   title: `col${i}`,
   dataIndex: `col${i}`,
@@ -148,22 +148,6 @@ function friendlySize(byteCount: number) {
       :row-height="24"
       :bordered="true"
     />
-    <!-- element-plus-v2 -->
-    <div v-if="activeTable === 'element-plus-v2'" h-600px>
-      <ElAutoResizer>
-        <template #default="{ width, height }">
-          <ElTableV2
-            :data="rows"
-            :width="width"
-            :height="height"
-            :border="true"
-            :row-height="24"
-            :columns="cols"
-            :fixed="true"
-          />
-        </template>
-      </ElAutoResizer>
-    </div>
     <!-- vueuse -->
     <div
       v-if="activeTable === 'vueuse'"
@@ -187,6 +171,22 @@ function friendlySize(byteCount: number) {
           </tr>
         </div>
       </table>
+    </div>
+    <!-- element-plus-v2 -->
+    <div v-if="activeTable === 'element-plus-v2'" h-600px>
+      <ElAutoResizer>
+        <template #default="{ width, height }">
+          <ElTableV2
+            :data="rows"
+            :width="width"
+            :height="height"
+            :border="true"
+            :row-height="24"
+            :columns="cols"
+            :fixed="true"
+          />
+        </template>
+      </ElAutoResizer>
     </div>
   </div>
 </template>

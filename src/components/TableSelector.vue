@@ -74,22 +74,22 @@ const emits = defineEmits<{
     <button
       px-2 text-white rounded transition
       :class="{
-        'bg-gray hover:bg-sky': props.activeTable !== 'surely-vue',
-        'bg-sky-5': props.activeTable === 'surely-vue',
-      }"
-      @click="emits('update:activeTable', 'surely-vue')"
-    >
-      surely-vue
-    </button>
-    <button
-      px-2 text-white rounded transition
-      :class="{
         'bg-gray hover:bg-sky': props.activeTable !== 'vueuse',
         'bg-sky-5': props.activeTable === 'vueuse',
       }"
       @click="emits('update:activeTable', 'vueuse')"
     >
       vueuse
+    </button>
+    <button
+      px-2 text-white rounded transition
+      :class="{
+        'bg-gray hover:bg-sky': props.activeTable !== 'surely-vue',
+        'bg-sky-5': props.activeTable === 'surely-vue',
+      }"
+      @click="emits('update:activeTable', 'surely-vue')"
+    >
+      surely-vue
     </button>
   </span>
 </template>
