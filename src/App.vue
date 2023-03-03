@@ -29,6 +29,7 @@ const rows = computed(() => {
   const _rows: Record<string, string>[] = new Array(rowCount.value)
   for (let i = 0; i < rowCount.value; i++) {
     const _row: Record<string, string> = {}
+    _row.key = i.toString()
     for (let j = 0; j < colCount.value; j++)
       _row[cols.value[j].dataIndex] = `row${i}_col${j}`
     _rows[i] = _row
@@ -137,6 +138,16 @@ function friendlySize(byteCount: number) {
         :width="col.width"
       />
     </ElTable>
+    <!-- surely-vue -->
+    <STable
+      v-if="activeTable === 'surely-vue'"
+      :columns="cols"
+      :data-source="rows"
+      :scroll="{ y: 600 }"
+      :pagination="false"
+      :row-height="24"
+      :bordered="true"
+    />
     <!-- element-plus-v2 -->
     <div v-if="activeTable === 'element-plus-v2'" h-600px>
       <ElAutoResizer>

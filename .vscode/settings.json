@@ -22,5 +22,6 @@
     "Vitesse",
     "vitest",
     "vueuse"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

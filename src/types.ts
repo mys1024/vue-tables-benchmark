@@ -6,3 +6,4 @@ export type TableName =
 | 'element-plus-v2'
 | 'vxe-table'
 | 'vueuse'
+| 'surely-vue'
