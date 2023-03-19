@@ -1,19 +1,22 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { useMemory, useVirtualList } from '@vueuse/core'
+import { useMemory, useVirtualList, useWindowSize } from '@vueuse/core'
 import { Table as AntdTable } from 'ant-design-vue'
 import { ElAutoResizer, ElTable, ElTableColumn, ElTableV2 } from 'element-plus'
 import { VxeColumn, VxeTable } from 'vxe-table'
+import { VGrid } from 'vue-vgrid'
 
 import 'ant-design-vue/dist/antd.css'
 import 'vxe-table/lib/vxe-table/style/style.css'
 import 'vxe-table/lib/vxe-column/style/style.css'
 import 'element-plus/dist/index.css'
+import 'vue-vgrid/style.css'
 
 import type { TableName } from '~/types'
 import TableSelector from '~/components/TableSelector.vue'
 
 const { memory } = useMemory()
+const { width: windowWidth } = useWindowSize()
 
 const activeTable = ref<TableName>('none')
 const colCount = ref(10)
@@ -188,5 +191,21 @@ function friendlySize(byteCount: number) {
         </template>
       </ElAutoResizer>
     </div>
+    <!-- vue-vgrid -->
+    <VGrid
+      v-if="activeTable === 'vue-vgrid'"
+      :view-height="600" :view-width="windowWidth - 72"
+      :col-count="cols.length" :row-count="rows.length + 1"
+      :row-height="24" :col-width="120"
+    >
+      <template #cell="{ y, x }">
+        <template v-if="y === 0">
+          {{ cols[x].title }}
+        </template>
+        <template v-else>
+          {{ rows[y - 1][cols[x].key] }}
+        </template>
+      </template>
+    </VGrid>
   </div>
 </template>

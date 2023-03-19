@@ -7,3 +7,4 @@ export type TableName =
 | 'vxe-table'
 | 'vueuse'
 | 'surely-vue'
+| 'vue-vgrid'

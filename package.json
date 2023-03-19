@@ -21,6 +21,7 @@
     "ant-design-vue": "^3.2.15",
     "element-plus": "^2.2.32",
     "vue": "^3.2.45",
+    "vue-vgrid": "^0.9.0",
     "vxe-table": "^4.3.10",
     "xe-utils": "^3.5.7"
   },

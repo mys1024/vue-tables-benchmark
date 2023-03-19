@@ -91,5 +91,15 @@ const emits = defineEmits<{
     >
       surely-vue
     </button>
+    <button
+      px-2 text-white rounded transition
+      :class="{
+        'bg-gray hover:bg-sky': props.activeTable !== 'vue-vgrid',
+        'bg-sky-5': props.activeTable === 'vue-vgrid',
+      }"
+      @click="emits('update:activeTable', 'vue-vgrid')"
+    >
+      vue-vgrid
+    </button>
   </span>
 </template>
